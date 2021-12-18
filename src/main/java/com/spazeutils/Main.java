@@ -17,6 +17,8 @@ public final class Main extends JavaPlugin {
 
         Bukkit.getConsoleSender().sendMessage(Main.prefix + "loaded!");
 
+        register();
+
     }
 
     @Override
