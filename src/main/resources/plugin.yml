@@ -1,0 +1,7 @@
+name: SpazeUtils
+version: '${project.version}'
+main: com.spazeutils.Main
+api-version: 1.18
+authors: [ Das_Randmeer, Theminestone ]
+description: SpazeUtils
+website: github.com/Theminestone/SpazeUtils
