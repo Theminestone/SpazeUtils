@@ -5,3 +5,8 @@ api-version: 1.18
 authors: [ Das_Randmeer, Theminestone ]
 description: SpazeUtils
 website: github.com/Theminestone/SpazeUtils
+commands:
+  wb:
+    description: Workbench
+  ec:
+    description: Enderchest
