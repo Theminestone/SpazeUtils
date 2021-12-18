@@ -2,6 +2,8 @@ package com.spazeutils;
 
 import com.spazeutils.commands.Enderchest;
 import com.spazeutils.commands.Workbench;
+import com.spazeutils.listeners.PlayerJoin;
+import com.spazeutils.listeners.PlayerQuit;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -17,7 +19,8 @@ public final class Main extends JavaPlugin {
 
         Bukkit.getConsoleSender().sendMessage(Main.prefix + "loaded!");
 
-        register();
+        registerCommands();
+        registerListeners();
     }
 
     @Override
@@ -25,8 +28,13 @@ public final class Main extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-    private void register() {
+    private void registerCommands() {
         Objects.requireNonNull(getCommand("wb")).setExecutor(new Workbench());
         Objects.requireNonNull(getCommand("ec")).setExecutor(new Enderchest());
+    }
+
+    private void registerListeners() {
+        Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerQuit(), this);
     }
 }
