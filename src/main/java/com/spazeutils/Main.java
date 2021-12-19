@@ -8,7 +8,6 @@ import com.spazeutils.listeners.PlayerJoin;
 import com.spazeutils.listeners.PlayerQuit;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import java.util.Objects;
 
 public final class Main extends JavaPlugin {
