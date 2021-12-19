@@ -10,3 +10,5 @@ commands:
     description: Workbench
   ec:
     description: Enderchest
+  login:
+    description: login [password]
