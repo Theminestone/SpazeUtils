@@ -7,7 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Enderchest implements CommandExecutor {
+public class EnderchestCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -16,8 +16,8 @@ public class Enderchest implements CommandExecutor {
             Player player = (Player) sender;
             if (args.length == 0) {
                 player.openInventory(player.getEnderChest());
-            } else player.sendMessage(Main.prefix + ChatColor.RED + "Bitte nur /wb eingeben");
-        } else sender.sendMessage(Main.prefix + "Dieser Befehl funktioniert nur bei Spieler!");
+            } else player.sendMessage(Main.prefix + ChatColor.RED + "Please use /ec");
+        } else sender.sendMessage(Main.prefix + "Not a Player");
 
         return false;
     }

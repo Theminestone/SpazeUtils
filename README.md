@@ -1,3 +1,3 @@
 # SpazeUtils
 
-potato server go brrrr
+SpaceCraft 4.0 Utils aka "Potato Inc."

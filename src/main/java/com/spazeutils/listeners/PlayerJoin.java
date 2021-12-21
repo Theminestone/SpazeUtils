@@ -21,6 +21,7 @@ public class PlayerJoin implements Listener {
 
         Player player = event.getPlayer();
         event.setJoinMessage(" §a>§2>§a> " + ChatColor.GRAY + player.getName());
+
         player.setMetadata("su_loggedin", new FixedMetadataValue(Main.getPlugin(), false));
         player.setMetadata("su_locx", new FixedMetadataValue(Main.getPlugin(), player.getLocation().getX()));
         player.setMetadata("su_locy", new FixedMetadataValue(Main.getPlugin(), player.getLocation().getY()));
@@ -39,7 +40,7 @@ public class PlayerJoin implements Listener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        player.setMetadata ("su_inv", new FixedMetadataValue(Main.getPlugin(), inv));
+        player.setMetadata("su_inv", new FixedMetadataValue(Main.getPlugin(), inv));
         player.getInventory().clear();
 
         player.setGameMode(GameMode.SPECTATOR);

@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 import java.util.Objects;
 
-public class Workbench implements CommandExecutor {
+public class WorkbenchCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
@@ -17,8 +17,8 @@ public class Workbench implements CommandExecutor {
             Player player = (Player) sender;
             if (args.length == 0) {
                 player.openInventory(Objects.requireNonNull(player.openWorkbench(null, true)));
-            } else player.sendMessage(Main.prefix + ChatColor.RED + "Bitte nur /wb eingeben");
-        } else sender.sendMessage(Main.prefix + "Dieser Befehl funktioniert nur bei Spieler!");
+            } else player.sendMessage(Main.prefix + ChatColor.RED + "Please use /wb");
+        } else sender.sendMessage(Main.prefix + "Not a Player");
 
         return false;
     }
