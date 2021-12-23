@@ -14,4 +14,4 @@ commands:
   login:
     description: login [password]
   timer:
-    description: timerx
+    description: timer
