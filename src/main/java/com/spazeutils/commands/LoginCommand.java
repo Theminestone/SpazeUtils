@@ -65,7 +65,7 @@ public class LoginCommand implements CommandExecutor {
         p.removePotionEffect(PotionEffectType.SLOW);
         p.teleport(new Location(Bukkit.getWorld("world"), p.getMetadata("su_locx").get(0).asFloat(), p.getMetadata("su_locy").get(0).asFloat(), p.getMetadata("su_locz").get(0).asFloat()));
         p.setGameMode(GameMode.SURVIVAL);
-        p.sendMessage(ChatColor.GREEN + "Welcome" + p.getDisplayName());
+        p.sendMessage(ChatColor.GRAY + "Welcome, " + p.getDisplayName());
 
         // https://bukkit.org/threads/encoding-inventory-with-base64.457805/
         try {

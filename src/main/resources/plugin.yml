@@ -15,3 +15,5 @@ commands:
     description: login [password]
   timer:
     description: timer
+  stats:
+    description: statistics

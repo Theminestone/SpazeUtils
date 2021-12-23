@@ -1,6 +1,6 @@
 package com.spazeutils.listeners;
-
 import com.spazeutils.Main;
+
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,6 +20,7 @@ public class PlayerJoin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
 
         Player player = event.getPlayer();
+
         event.setJoinMessage(" §a>§2>§a> " + ChatColor.GRAY + player.getName());
 
         player.setMetadata("su_loggedin", new FixedMetadataValue(Main.getPlugin(), false));
@@ -48,6 +49,7 @@ public class PlayerJoin implements Listener {
         player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, Integer.MAX_VALUE, 256));
         player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 256));
         player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1f, 1f);
+        player.sendMessage(Main.prefix + "Log in via '/login [password]'");
 
     }
 }
