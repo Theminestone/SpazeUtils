@@ -13,7 +13,5 @@ commands:
     description: Opens the Enderchest
   login:
     description: login [password]
-  #  timer:
-  #    description: timer
   stats:
     description: Shows Server Informations
