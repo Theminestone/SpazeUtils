@@ -8,12 +8,12 @@ website: github.com/Theminestone/SpazeUtils
 
 commands:
   wb:
-    description: wb
+    description: Opens the Workbench
   ec:
-    description: ec
+    description: Opens the Enderchest
   login:
     description: login [password]
-  timer:
-    description: timer
+  #  timer:
+  #    description: timer
   stats:
-    description: statistics
+    description: Shows Server Informations

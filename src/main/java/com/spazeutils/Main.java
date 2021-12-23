@@ -19,6 +19,7 @@ public final class Main extends JavaPlugin {
     public static String prefix = "§7[§6SpazeUtils§7] ";
     private static Main plugin;
     private Logger logger;
+
     @Override
     public void onLoad() {
         plugin = this;
@@ -26,9 +27,12 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
         Bukkit.getConsoleSender().sendMessage(Main.prefix + "loaded!");
+
         registerCommands();
         registerListeners();
+
         logger = new Logger();
         plugin.saveDefaultConfig();
     }
@@ -50,8 +54,9 @@ public final class Main extends JavaPlugin {
     }
 
     private void registerListeners() {
-        Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
+
         Bukkit.getPluginManager().registerEvents(new PlayerQuit(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerMove(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerLogin(), this);
     }

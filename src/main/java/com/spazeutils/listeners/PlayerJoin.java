@@ -20,7 +20,6 @@ public class PlayerJoin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
 
         Player player = event.getPlayer();
-
         event.setJoinMessage(" §a>§2>§a> " + ChatColor.GRAY + player.getName());
 
         player.setMetadata("su_loggedin", new FixedMetadataValue(Main.getPlugin(), false));
