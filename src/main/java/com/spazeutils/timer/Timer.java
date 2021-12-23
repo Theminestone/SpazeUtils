@@ -10,16 +10,22 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class Timer {
 
-    private boolean running;
+    private boolean running; // true or false
     private int time;
 
     public Timer() {
+        Config config = Main.getInstance().getConfiguration();
 
         this.running = false;
-        this.time = 0;
+
+        if (config.getConfig().contains("timer.time")) {
+            this.time = config.getConfig().getInt("timer.time");
+        } else {
+            this.time = 0;
+        }
+
         run();
     }
-
 
     public boolean isRunning() {
         return running;
@@ -49,6 +55,12 @@ public class Timer {
             player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GOLD.toString() +
                     ChatColor.BOLD + getTime()));
         }
+    }
+
+    public void save() {
+        Config config = Main.getInstance().getConfiguration();
+
+        config.getConfig().set("timer.time", time);
     }
 
     private void run() {

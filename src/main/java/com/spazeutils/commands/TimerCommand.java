@@ -14,8 +14,9 @@ public class TimerCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
+
             if (args.length == 0) {
-                sendUsage(player);
+                sendUsage(sender);
                 return true;
             }
 
@@ -24,29 +25,30 @@ public class TimerCommand implements CommandExecutor {
                     Timer timer = Main.getInstance().getTimer();
 
                     if (timer.isRunning()) {
-                        player.sendMessage(ChatColor.RED + "Der Timer läuft bereits.");
+                        sender.sendMessage(ChatColor.RED + "Der Timer läuft bereits.");
                         break;
                     }
 
                     timer.setRunning(true);
-                    player.sendMessage(ChatColor.GRAY + "Der Timer wurde gestartet.");
+                    sender.sendMessage(ChatColor.GRAY + "Der Timer wurde gestartet.");
                     break;
                 }
                 case "pause": {
                     Timer timer = Main.getInstance().getTimer();
 
                     if (!timer.isRunning()) {
-                        player.sendMessage(ChatColor.RED + "Der Timer läuft nicht.");
+                        sender.sendMessage(ChatColor.RED + "Der Timer läuft nicht.");
                         break;
                     }
 
                     timer.setRunning(false);
-                    player.sendMessage(ChatColor.GRAY + "Der Timer wurde gestoppt.");
+                    sender.sendMessage(ChatColor.GRAY + "Der Timer wurde gestoppt.");
                     break;
                 }
                 case "time": {
                     if (args.length != 2) {
-                        player.sendMessage(ChatColor.GRAY + "Verwendung" + ChatColor.DARK_GRAY + ": " + ChatColor.BLUE + "/timer time <Zeit>");
+                        sender.sendMessage(ChatColor.GRAY + "Verwendung" + ChatColor.DARK_GRAY + ": " + ChatColor.BLUE +
+                                "/timer time <Zeit>");
                         return true;
                     }
 
@@ -55,9 +57,9 @@ public class TimerCommand implements CommandExecutor {
 
                         timer.setRunning(false);
                         timer.setTime(Integer.parseInt(args[1]));
-                        player.sendMessage(ChatColor.GRAY + "Die Zeit wurde auf " + args[1] + " gesetzt.");
+                        sender.sendMessage(ChatColor.GRAY + "Die Zeit wurde auf " + args[1] + " gesetzt.");
                     } catch (NumberFormatException e) {
-                        player.sendMessage(ChatColor.RED + "Dein Parameter 2 muss eine Zahl sein.");
+                        sender.sendMessage(ChatColor.RED + "Dein Parameter 2 muss eine Zahl sein.");
                     }
                     break;
                 }
@@ -66,18 +68,19 @@ public class TimerCommand implements CommandExecutor {
 
                     timer.setRunning(false);
                     timer.setTime(0);
-                    player.sendMessage(ChatColor.GRAY + "Der Timer wurde zurückgesetzt.");
+                    sender.sendMessage(ChatColor.GRAY + "Der Timer wurde zurückgesetzt.");
                     break;
                 }
                 default:
-                    sendUsage(player);
+                    sendUsage(sender);
                     break;
             }
-        } else sender.sendMessage("Error Code 404");
+        }
         return false;
     }
 
-    private void sendUsage(CommandSender player) {
-        player.sendMessage(ChatColor.GRAY + "Verwendung" + ChatColor.DARK_GRAY + ": " + ChatColor.BLUE + "/timer resume, /timer pause, /timer time <Zeit>, /timer reset");
+    private void sendUsage(CommandSender sender) {
+        sender.sendMessage(ChatColor.GRAY + "Verwendung" + ChatColor.DARK_GRAY + ": " + ChatColor.BLUE +
+                "/timer resume, /timer pause, /timer time <Zeit>, /timer reset");
     }
 }

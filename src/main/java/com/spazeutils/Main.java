@@ -7,6 +7,7 @@ import com.spazeutils.commands.WorkbenchCommand;
 import com.spazeutils.listeners.PlayerJoin;
 import com.spazeutils.listeners.PlayerMove;
 import com.spazeutils.listeners.PlayerQuit;
+import com.spazeutils.timer.Config;
 import com.spazeutils.timer.Timer;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,17 +20,25 @@ public final class Main extends JavaPlugin {
     private static Main plugin;
     private static Main instance;
     private Timer timer;
+    private Config config;
 
     @Override
     public void onLoad() {
         instance = this;
+        config = new Config();
     }
 
     @Override
     public void onEnable() {
         // Plugin startup logic
         plugin = this;
+
+        System.out.println();
+        System.out.println();
         Bukkit.getConsoleSender().sendMessage(Main.prefix + "loaded!");
+        System.out.println();
+        System.out.println();
+
         registerCommands();
         registerListeners();
         timer = new Timer();
@@ -38,6 +47,9 @@ public final class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+
+        timer.save();
+        config.save();
     }
 
     public static Main getPlugin() {
@@ -46,6 +58,10 @@ public final class Main extends JavaPlugin {
 
     public static Main getInstance() {
         return instance;
+    }
+
+    public Config getConfiguration() {
+        return config;
     }
 
     public Timer getTimer() {
