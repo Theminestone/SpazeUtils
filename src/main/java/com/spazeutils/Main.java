@@ -51,6 +51,9 @@ public final class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("login")).setExecutor(new LoginCommand());
         Objects.requireNonNull(getCommand("stats")).setExecutor(new StatsCommand());
         Objects.requireNonNull(getCommand("ping")).setExecutor(new PingCommand());
+        Objects.requireNonNull(getCommand("pw")).setExecutor(new PasswordCommand());
+        Objects.requireNonNull(getCommand("rules")).setExecutor(new RulesCommand());
+
     }
 
     private void registerListeners() {

@@ -65,7 +65,7 @@ public class LoginCommand implements CommandExecutor {
         p.setMetadata("su_loggedin", new FixedMetadataValue(Main.getPlugin(), true));
         p.removePotionEffect(PotionEffectType.BLINDNESS);
         p.removePotionEffect(PotionEffectType.SLOW);
-        p.teleport(new Location(Bukkit.getWorld("world"), p.getMetadata("su_locx").get(0).asFloat(), p.getMetadata("su_locy").get(0).asFloat(), p.getMetadata("su_locz").get(0).asFloat()));
+        p.teleport(new Location(p.getWorld(), p.getMetadata("su_locx").get(0).asFloat(), p.getMetadata("su_locy").get(0).asFloat(), p.getMetadata("su_locz").get(0).asFloat()));
         p.setGameMode(GameMode.SURVIVAL);
 
         // https://bukkit.org/threads/encoding-inventory-with-base64.457805/

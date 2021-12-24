@@ -17,3 +17,7 @@ commands:
     description: Shows Server Informations
   ping:
     description: Showes a Players Ping
+  pw:
+    description: Password Utility
+  rules:
+    description: Server Rules
