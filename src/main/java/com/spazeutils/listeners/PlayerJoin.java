@@ -33,7 +33,7 @@ public class PlayerJoin implements Listener {
             clearPlayer(player);
         }
         player.setGameMode(GameMode.SPECTATOR);
-        player.teleport(new Location(Bukkit.getWorld("world"), 0.5, 300, 0.5));
+        player.teleport(new Location(player.getWorld(), 0.5, 300, 0.5));
         player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, Integer.MAX_VALUE, 256));
         player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 256));
         player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1f, 1f);
