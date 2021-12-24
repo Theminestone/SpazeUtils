@@ -1,22 +1,20 @@
 package com.spazeutils;
 
-import com.spazeutils.commands.EnderchestCommand;
-import com.spazeutils.commands.LoginCommand;
-import com.spazeutils.commands.StatsCommand;
-import com.spazeutils.commands.WorkbenchCommand;
+import com.spazeutils.commands.*;
 import com.spazeutils.listeners.PlayerJoin;
 import com.spazeutils.listeners.PlayerLogin;
 import com.spazeutils.listeners.PlayerMove;
 import com.spazeutils.listeners.PlayerQuit;
 import com.spazeutils.logger.Logger;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
 
 public final class Main extends JavaPlugin {
 
-    public static String prefix = "§7[§6SpazeUtils§7] ";
+    public static String prefix = "§1[§6SpazeUtils§1] ";
     private static Main plugin;
     private Logger logger;
 
@@ -27,8 +25,9 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
-        Bukkit.getConsoleSender().sendMessage(Main.prefix + "loaded!");
+        System.out.println();
+        Bukkit.getConsoleSender().sendMessage(Main.prefix + ChatColor.GREEN + "loaded!");
+        System.out.println();
 
         registerCommands();
         registerListeners();
@@ -51,6 +50,7 @@ public final class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("ec")).setExecutor(new EnderchestCommand());
         Objects.requireNonNull(getCommand("login")).setExecutor(new LoginCommand());
         Objects.requireNonNull(getCommand("stats")).setExecutor(new StatsCommand());
+        Objects.requireNonNull(getCommand("ping")).setExecutor(new PingCommand());
     }
 
     private void registerListeners() {

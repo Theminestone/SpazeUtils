@@ -19,7 +19,6 @@ public class WorkbenchCommand implements CommandExecutor {
                 player.openInventory(Objects.requireNonNull(player.openWorkbench(null, true)));
             } else player.sendMessage(Main.prefix + ChatColor.RED + "Please use /wb");
         } else sender.sendMessage(Main.prefix + "Not a Player");
-
         return false;
     }
 }

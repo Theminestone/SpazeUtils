@@ -31,6 +31,7 @@ public class LoginCommand implements CommandExecutor {
                     List<MetadataValue> values = player.getMetadata("spazeutils_password");
                     if (!values.isEmpty() && values.get(0).asString().equals(args[0])) {
                         player.sendMessage(Main.prefix + ChatColor.GREEN + "Successfully logged in.");
+                        player.sendMessage(ChatColor.AQUA + "Welcome back, " + ChatColor.BOLD + player.getDisplayName());
                         loginPlayer(player);
                     } else {
                         player.sendMessage(Main.prefix + ChatColor.RED + "Incorrect password. Try again!");
@@ -38,6 +39,7 @@ public class LoginCommand implements CommandExecutor {
                 } else {
                     player.setMetadata("spazeutils_password", new FixedMetadataValue(Main.getPlugin(), args[0]));
                     player.sendMessage(Main.prefix + ChatColor.GREEN + "Successfully registered " + player.getDisplayName());
+                    player.sendMessage(ChatColor.AQUA + "Welcome, " + ChatColor.BOLD + player.getDisplayName());
                     loginPlayer(player);
                 }
             } else if (args.length == 2) {
@@ -65,7 +67,6 @@ public class LoginCommand implements CommandExecutor {
         p.removePotionEffect(PotionEffectType.SLOW);
         p.teleport(new Location(Bukkit.getWorld("world"), p.getMetadata("su_locx").get(0).asFloat(), p.getMetadata("su_locy").get(0).asFloat(), p.getMetadata("su_locz").get(0).asFloat()));
         p.setGameMode(GameMode.SURVIVAL);
-        p.sendMessage(ChatColor.GRAY + "Welcome, " + p.getDisplayName());
 
         // https://bukkit.org/threads/encoding-inventory-with-base64.457805/
         try {

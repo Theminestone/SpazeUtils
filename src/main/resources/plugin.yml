@@ -15,3 +15,5 @@ commands:
     description: login [password]
   stats:
     description: Shows Server Informations
+  ping:
+    description: Showes a Players Ping
