@@ -21,10 +21,10 @@ public class InvSeeCommand implements CommandExecutor {
                         if (target != player) {
                             player.openInventory(target.getInventory());
                         } else player.openInventory(player.getInventory());
-                    } else player.sendMessage(Main.prefix + ChatColor.RED + "Player " + target.getName() + " not online");
+                    } else player.sendMessage(Main.prefix + ChatColor.RED + "Player " + target.getName() + " is not online");
                 } else player.sendMessage(Main.prefix + ChatColor.RED + "/invsee <Player>");
-            } else player.sendMessage(Main.prefix + ChatColor.RED + "No permissions!");
-        } else sender.sendMessage(Main.prefix + ChatColor.RED + "Only for Players!");
+            } else player.sendMessage(Main.prefix + ChatColor.RED + "Error 404");
+        } else sender.sendMessage(Main.prefix + ChatColor.RED + "Not a Player");
         return false;
     }
 }

@@ -22,12 +22,12 @@ public class EnderchestCommand implements CommandExecutor {
                     Player target = Bukkit.getPlayer(args[0]);
                     if (target != null) {
                         player.openInventory(target.getEnderChest());
-                    } else player.sendMessage(Main.prefix + ChatColor.RED + "Der Spieler " + target.getName() + " ist nicht Online!");
-                } else player.sendMessage(Main.prefix + ChatColor.RED + "/ec <Spieler>");
+                    } else player.sendMessage(Main.prefix + ChatColor.RED + "Player " + target.getName() + " is not Online");
+                } else player.sendMessage(Main.prefix + ChatColor.RED + "/ec <Player>");
             } else if (args.length == 0) {
                 player.openInventory(player.getEnderChest());
             } else player.sendMessage(Main.prefix + ChatColor.RED + "Bitte nur /ec");
-        } else sender.sendMessage(Main.prefix + ChatColor.RED + "Dieser Befehlt geht nur bei Spieler!");
+        } else sender.sendMessage(Main.prefix + ChatColor.RED + "Not a Player");
         return false;
     }
 }
