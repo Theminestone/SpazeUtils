@@ -21,3 +21,5 @@ commands:
     description: Password Utility
   rules:
     description: Server Rules
+  invsee:
+    description: Sees a Inventory of a Player
