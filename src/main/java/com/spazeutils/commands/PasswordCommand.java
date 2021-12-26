@@ -1,6 +1,7 @@
 package com.spazeutils.commands;
 
 import com.spazeutils.Main;
+import com.spazeutils.utils.Spaze64;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -24,9 +25,9 @@ public class PasswordCommand implements CommandExecutor {
                 if (target == null) {
                     sender.sendMessage(Main.prefix + ChatColor.RED + "No Player named '" + args[1] + "' found.");
                 } else {
-                    if (target.hasMetadata("spazeutils_password")) {
-                        target.removeMetadata("spazeutils_password", Main.getPlugin());
-                        target.removeMetadata("su_loggedin", Main.getPlugin());
+                    if (Spaze64.checkPlayerPassword(target)) {
+                        Spaze64.removePlayerPassword(target);
+                        Spaze64.removePlayerLoggedin(target);
                     } else {
                         sender.sendMessage(Main.prefix + ChatColor.RED + "Player " + args[1] + " has not registered yet.");
                     }
@@ -36,7 +37,7 @@ public class PasswordCommand implements CommandExecutor {
                 if (Bukkit.getPlayer(args[1]) == null) {
                     sender.sendMessage(Main.prefix + ChatColor.RED + "No Player named '" + args[1] + "' found.");
                 } else {
-                    target.setMetadata("spazeutils_password", new FixedMetadataValue(Main.getPlugin(), args[2]));
+                    Spaze64.setPlayerPassword(target, args[2]);
                 }
             }
         } else sender.sendMessage(Main.prefix + ChatColor.RED + "This Command is Console-Only.");

@@ -71,6 +71,9 @@ public class Spaze64 {
         loadPasswords();
         return  Main.passwords.get(p.getDisplayName());
     }
+    public static void removePlayerLoggedin(Player p) {
+        Main.loggedins.remove(p.getDisplayName());
+    }
     public static void setPlayerPassword(Player p, String value) {
         Main.passwords.put(p.getDisplayName(), value);
         savePasswords();
@@ -80,6 +83,9 @@ public class Spaze64 {
     }
     public static boolean comparePlayerPassword(Player p, String password) {
         return Main.passwords.get(p.getDisplayName()).equals(password);
+    }
+    public static void removePlayerPassword(Player p) {
+        Main.passwords.remove(p.getDisplayName());
     }
     public static void load() {
         loadPasswords();
