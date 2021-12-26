@@ -65,20 +65,23 @@ public class Spaze64 {
         saveLoggedins();
     }
     public static boolean checkPlayerLoggedin(Player p) {
+        loadLoggedins();
         return  Main.loggedins.containsKey(p.getDisplayName());
+    }
+    public static void removePlayerLoggedin(Player p) {
+        Main.loggedins.remove(p.getDisplayName());
+        saveLoggedins();
     }
     public static String getPlayerPassword(Player p) {
         loadPasswords();
         return  Main.passwords.get(p.getDisplayName());
-    }
-    public static void removePlayerLoggedin(Player p) {
-        Main.loggedins.remove(p.getDisplayName());
     }
     public static void setPlayerPassword(Player p, String value) {
         Main.passwords.put(p.getDisplayName(), value);
         savePasswords();
     }
     public static boolean checkPlayerPassword(Player p) {
+        loadPasswords();
         return Main.passwords.containsKey(p.getDisplayName());
     }
     public static boolean comparePlayerPassword(Player p, String password) {
@@ -86,6 +89,7 @@ public class Spaze64 {
     }
     public static void removePlayerPassword(Player p) {
         Main.passwords.remove(p.getDisplayName());
+        savePasswords();
     }
     public static void load() {
         loadPasswords();

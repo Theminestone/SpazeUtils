@@ -18,19 +18,24 @@ public class LoginCommand implements CommandExecutor {
             if (args.length == 0) {
                 player.sendMessage(Main.prefix + ChatColor.RED + "Please use '/login [password]' or '/login [old pw] [new pw]'.");
             } else if (args.length == 1) {
-                if (Spaze64.checkPlayerPassword(player)) {
-                    if (Spaze64.comparePlayerPassword(player, args[0])) {
-                        player.sendMessage(Main.prefix + ChatColor.GREEN + "Successfully logged in.");
-                        player.sendMessage(ChatColor.AQUA + "Welcome back, " + ChatColor.BOLD + player.getDisplayName());
-                        loginPlayer(player);
+                if (!Spaze64.getPlayerLoggedin(player)) {
+                    if (Spaze64.checkPlayerPassword(player)) {
+                        if (Spaze64.comparePlayerPassword(player, args[0])) {
+                            player.sendMessage(Main.prefix + ChatColor.GREEN + "Successfully logged in.");
+                            player.sendMessage(ChatColor.AQUA + "Welcome back, " + ChatColor.BOLD + player.getDisplayName());
+                            loginPlayer(player);
+                        } else {
+                            player.sendMessage(Main.prefix + ChatColor.RED + "Incorrect password. Try again!");
+                        }
                     } else {
-                        player.sendMessage(Main.prefix + ChatColor.RED + "Incorrect password. Try again!");
+                        Spaze64.setPlayerPassword(player, args[0]);
+                        player.sendMessage(Main.prefix + ChatColor.GREEN + "Successfully registered " + player.getDisplayName());
+                        player.sendMessage(ChatColor.AQUA + "Welcome, " + ChatColor.BOLD + player.getDisplayName());
+                        loginPlayer(player);
                     }
-                } else {
-                    Spaze64.setPlayerPassword(player, args[0]);
-                    player.sendMessage(Main.prefix + ChatColor.GREEN + "Successfully registered " + player.getDisplayName());
-                    player.sendMessage(ChatColor.AQUA + "Welcome, " + ChatColor.BOLD + player.getDisplayName());
-                    loginPlayer(player);
+                }
+                else {
+                    player.sendMessage(Main.prefix + ChatColor.RED + "Already logged in");
                 }
             } else if (args.length == 2) {
                 if (Spaze64.checkPlayerPassword(player)) {
