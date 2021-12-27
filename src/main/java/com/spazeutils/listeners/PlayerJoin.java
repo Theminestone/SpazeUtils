@@ -46,6 +46,7 @@ public class PlayerJoin implements Listener {
 
     public void PlayerConsoleOutput(Player p) {
         Bukkit.getConsoleSender().sendMessage("");
+
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Player " + p.getName() + " has joined the Server.");
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Here's some information: ");
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Location: " + "X: " + p.getLocation().getX() + ", Y: " + p.getLocation().getY() + ", Z: " + p.getLocation().getZ());
@@ -61,7 +62,7 @@ public class PlayerJoin implements Listener {
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Player Time Offset: " + p.getPlayerTimeOffset());
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Walk speed: " + p.getWalkSpeed());
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Server: " + p.getServer());
-        
+
         Bukkit.getConsoleSender().sendMessage("");
     }
 }

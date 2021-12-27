@@ -30,6 +30,7 @@ public class InfoCommand implements CommandExecutor {
 
     public void PlayerConsoleOutput(Player p) {
         Bukkit.getConsoleSender().sendMessage("");
+
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Player " + p.getName() + " has joined the Server.");
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Here a few Informations: ");
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Location: " + "X: " + p.getLocation().getX() + ", Y: " + p.getLocation().getY() + ", Z: " + p.getLocation().getZ());
