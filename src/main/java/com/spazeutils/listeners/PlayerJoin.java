@@ -61,6 +61,7 @@ public class PlayerJoin implements Listener {
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Player Time Offset: " + p.getPlayerTimeOffset());
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Walk speed: " + p.getWalkSpeed());
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Server: " + p.getServer());
+        
         Bukkit.getConsoleSender().sendMessage("");
     }
 }
