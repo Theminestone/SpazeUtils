@@ -42,21 +42,20 @@ public class PlayerJoin implements Listener {
     public void PlayerConsoleOutput(Player p) {
         Bukkit.getConsoleSender().sendMessage("");
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Player " + p.getName() + " has joined the Server.");
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Here a few Informations: ");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Here's some information: ");
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Location: " + "X: " + p.getLocation().getX() + ", Y: " + p.getLocation().getY() + ", Z: " + p.getLocation().getZ());
-        Bukkit.getConsoleSender().sendMessage("Health: " + Math.round(p.getHealth()));
-        Bukkit.getConsoleSender().sendMessage("FoodLevel: " + p.getFoodLevel());
-        Bukkit.getConsoleSender().sendMessage("BedSpawnLocation: " + p.getBedSpawnLocation());
-        Bukkit.getConsoleSender().sendMessage("Exp: " + p.getExp());
-        Bukkit.getConsoleSender().sendMessage("TotalExperience: " + p.getTotalExperience());
-        Bukkit.getConsoleSender().sendMessage("World: " + p.getWorld().getName());
-        Bukkit.getConsoleSender().sendMessage("World: " + p.getClientViewDistance());
-        Bukkit.getConsoleSender().sendMessage("World: " + p.getVelocity());
-        Bukkit.getConsoleSender().sendMessage("World: " + p.getFlySpeed());
-        Bukkit.getConsoleSender().sendMessage("World: " + p.getPlayerTimeOffset());
-        Bukkit.getConsoleSender().sendMessage("World: " + p.getWalkSpeed());
-        Bukkit.getConsoleSender().sendMessage("World: " + p.getServer());
-
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Health: " + Math.round(p.getHealth()));
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "FoodLevel: " + p.getFoodLevel());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "BedSpawnLocation: " + p.getBedSpawnLocation());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Exp: " + p.getExp());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "TotalExperience: " + p.getTotalExperience());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "World: " + p.getWorld().getName());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "View Distance: " + p.getClientViewDistance());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Velocity: " + p.getVelocity());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Fly speed: " + p.getFlySpeed());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Player Time Offset: " + p.getPlayerTimeOffset());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Walk speed: " + p.getWalkSpeed());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Server: " + p.getServer());
         Bukkit.getConsoleSender().sendMessage("");
     }
 }
