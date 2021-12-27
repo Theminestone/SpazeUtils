@@ -1,10 +1,7 @@
 package com.spazeutils;
 
 import com.spazeutils.commands.*;
-import com.spazeutils.listeners.PlayerJoin;
-import com.spazeutils.listeners.PlayerLogin;
-import com.spazeutils.listeners.PlayerMove;
-import com.spazeutils.listeners.PlayerQuit;
+import com.spazeutils.listeners.*;
 import com.spazeutils.logger.Logger;
 import com.spazeutils.utils.Spaze64;
 import org.bukkit.Bukkit;
@@ -69,5 +66,6 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerMove(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerLogin(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerTeleport(), this);
     }
 }
