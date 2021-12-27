@@ -1,6 +1,8 @@
 package com.spazeutils.utils;
 
 import com.spazeutils.Main;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -17,6 +19,28 @@ import java.util.HashMap;
 // I am unbelievably proud about that pun
 
 public class Spaze64 {
+
+    public static void PlayerConsoleOutput(Player p) {
+        Bukkit.getConsoleSender().sendMessage("");
+
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Player " + p.getName() + " has joined the Server.");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Here's some information: ");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Location: " + "X: " + p.getLocation().getX() + ", Y: " + p.getLocation().getY() + ", Z: " + p.getLocation().getZ());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Health: " + Math.round(p.getHealth()));
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "FoodLevel: " + p.getFoodLevel());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "BedSpawnLocation: " + p.getBedSpawnLocation());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Exp: " + p.getExp());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "TotalExperience: " + p.getTotalExperience());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "World: " + p.getWorld().getName());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "View Distance: " + p.getClientViewDistance());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Velocity: " + p.getVelocity());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Fly speed: " + p.getFlySpeed());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Player Time Offset: " + p.getPlayerTimeOffset());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Walk speed: " + p.getWalkSpeed());
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Server: " + p.getServer());
+
+        Bukkit.getConsoleSender().sendMessage("");
+    }
 
     public static void loadPlayerInv(Player p) {
         loadInventories();

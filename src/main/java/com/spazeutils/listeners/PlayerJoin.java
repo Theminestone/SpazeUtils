@@ -2,7 +2,10 @@ package com.spazeutils.listeners;
 
 import com.spazeutils.Main;
 import com.spazeutils.utils.Spaze64;
-import org.bukkit.*;
+import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
+import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,7 +19,7 @@ public class PlayerJoin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         event.setJoinMessage(" §a>§2>§a> " + ChatColor.GRAY + player.getName());
-        PlayerConsoleOutput(player);
+        Spaze64.PlayerConsoleOutput(player);
         if (Spaze64.checkPlayerLoggedin(player)) {
             if (Spaze64.getPlayerLoggedin(player)) {
                 savePlayer(player);
@@ -42,27 +45,5 @@ public class PlayerJoin implements Listener {
     public void savePlayer(Player p) {
         Spaze64.savePlayerLoc(p);
         Spaze64.savePlayerInv(p);
-    }
-
-    public void PlayerConsoleOutput(Player p) {
-        Bukkit.getConsoleSender().sendMessage("");
-
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Player " + p.getName() + " has joined the Server.");
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Here's some information: ");
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Location: " + "X: " + p.getLocation().getX() + ", Y: " + p.getLocation().getY() + ", Z: " + p.getLocation().getZ());
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Health: " + Math.round(p.getHealth()));
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "FoodLevel: " + p.getFoodLevel());
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "BedSpawnLocation: " + p.getBedSpawnLocation());
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Exp: " + p.getExp());
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "TotalExperience: " + p.getTotalExperience());
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "World: " + p.getWorld().getName());
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "View Distance: " + p.getClientViewDistance());
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Velocity: " + p.getVelocity());
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Fly speed: " + p.getFlySpeed());
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Player Time Offset: " + p.getPlayerTimeOffset());
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Walk speed: " + p.getWalkSpeed());
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Server: " + p.getServer());
-
-        Bukkit.getConsoleSender().sendMessage("");
     }
 }
