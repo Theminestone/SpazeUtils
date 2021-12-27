@@ -24,17 +24,22 @@ public class PlayerJoin implements Listener {
         } else {
             savePlayer(player);
         }
-        player.getInventory().clear();
-        player.setGameMode(GameMode.SPECTATOR);
-        player.teleport(new Location(player.getWorld(), 0.5, 300, 0.5));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, Integer.MAX_VALUE, 256));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 256));
-        player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1f, 1f);
-        player.sendMessage(Main.prefix + ChatColor.DARK_AQUA + "Log in via '/login [password]'");
+        clearPlayer(player);
+    }
+
+    public void clearPlayer(Player p) {
+        p.getInventory().clear();
+        p.setGameMode(GameMode.SPECTATOR);
+        p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, Integer.MAX_VALUE, 256));
+        p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 256));
+        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1f, 1f);
+        p.sendMessage(Main.prefix + ChatColor.DARK_AQUA + "Log in via '/login [password]'");
+        Spaze64.setPlayerLoggedin(p, true);
+        p.teleport(new Location(p.getWorld(), 0.5, 300, 0.5));
+        Spaze64.setPlayerLoggedin(p, false);
     }
 
     public void savePlayer(Player p) {
-        Spaze64.setPlayerLoggedin(p, false);
         Spaze64.savePlayerLoc(p);
         Spaze64.savePlayerInv(p);
     }
