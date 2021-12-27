@@ -1,42 +1,31 @@
-package com.spazeutils.listeners;
+package com.spazeutils.commands;
 
-import com.spazeutils.Main;
-import com.spazeutils.utils.Spaze64;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
-public class PlayerJoin implements Listener {
+public class InfoCommand implements CommandExecutor {
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (sender instanceof ConsoleCommandSender) {
+            if (args.length == 0) {
+                sender.sendMessage(ChatColor.RED + "Please use 'info <Player>'.");
+            } else if (args.length == 1) {
+                Player player = Bukkit.getPlayer(args[0]);
+                if (player != null) {
+                    //Aufruf von PlayerConsoleOutput in PlayerJoin
 
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        event.setJoinMessage(" §a>§2>§a> " + ChatColor.GRAY + player.getName());
-        PlayerConsoleOutput(player);
-        if (Spaze64.checkPlayerLoggedin(player)) {
-            if (Spaze64.getPlayerLoggedin(player)) {
-                savePlayer(player);
+                    PlayerConsoleOutput(player);
+
+
+                } else sender.sendMessage("Player off");
             }
-        } else {
-            savePlayer(player);
         }
-        player.getInventory().clear();
-        player.setGameMode(GameMode.SPECTATOR);
-        player.teleport(new Location(player.getWorld(), 0.5, 300, 0.5));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, Integer.MAX_VALUE, 256));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 256));
-        player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1f, 1f);
-        player.sendMessage(Main.prefix + ChatColor.DARK_AQUA + "Log in via '/login [password]'");
-    }
-
-    public void savePlayer(Player p) {
-        Spaze64.setPlayerLoggedin(p, false);
-        Spaze64.savePlayerLoc(p);
-        Spaze64.savePlayerInv(p);
+        return false;
     }
 
     public void PlayerConsoleOutput(Player p) {
@@ -56,6 +45,7 @@ public class PlayerJoin implements Listener {
         Bukkit.getConsoleSender().sendMessage("World: " + p.getPlayerTimeOffset());
         Bukkit.getConsoleSender().sendMessage("World: " + p.getWalkSpeed());
         Bukkit.getConsoleSender().sendMessage("World: " + p.getServer());
+
         Bukkit.getConsoleSender().sendMessage("");
     }
 }
