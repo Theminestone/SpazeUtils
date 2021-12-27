@@ -33,8 +33,7 @@ public class LoginCommand implements CommandExecutor {
                         player.sendMessage(ChatColor.AQUA + "Welcome, " + ChatColor.BOLD + player.getDisplayName());
                         loginPlayer(player);
                     }
-                }
-                else {
+                } else {
                     player.sendMessage(Main.prefix + ChatColor.RED + "Already logged in");
                 }
             } else if (args.length == 2) {

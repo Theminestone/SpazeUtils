@@ -1,8 +1,6 @@
 package com.spazeutils.utils;
 
 import com.spazeutils.Main;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -34,6 +32,7 @@ public class Spaze64 {
             e.printStackTrace();
         }
     }
+
     public static void savePlayerInv(Player p) {
         try {
             ByteArrayOutputStream str = new ByteArrayOutputStream();
@@ -48,49 +47,61 @@ public class Spaze64 {
         }
         saveInventories();
     }
+
     public static void loadPlayerLoc(Player p) {
         loadLocations();
-        p.teleport( Main.locations.get(p.getDisplayName()));
+        p.teleport(Main.locations.get(p.getDisplayName()));
     }
+
     public static void savePlayerLoc(Player p) {
         Main.locations.put(p.getDisplayName(), p.getLocation());
         saveLocations();
     }
+
     public static boolean getPlayerLoggedin(Player p) {
         loadLoggedins();
-        return  Main.loggedins.get(p.getDisplayName());
+        return Main.loggedins.get(p.getDisplayName());
     }
+
     public static void setPlayerLoggedin(Player p, boolean value) {
         Main.loggedins.put(p.getDisplayName(), value);
         saveLoggedins();
     }
+
     public static boolean checkPlayerLoggedin(Player p) {
         loadLoggedins();
-        return  Main.loggedins.containsKey(p.getDisplayName());
+        return Main.loggedins.containsKey(p.getDisplayName());
     }
+
     public static void removePlayerLoggedin(Player p) {
         Main.loggedins.remove(p.getDisplayName());
         saveLoggedins();
     }
+
     public static String getPlayerPassword(Player p) {
         loadPasswords();
-        return  Main.passwords.get(p.getDisplayName());
+        return Main.passwords.get(p.getDisplayName());
     }
+
     public static void setPlayerPassword(Player p, String value) {
         Main.passwords.put(p.getDisplayName(), value);
         savePasswords();
     }
+
     public static boolean checkPlayerPassword(Player p) {
         loadPasswords();
         return Main.passwords.containsKey(p.getDisplayName());
     }
+
     public static boolean comparePlayerPassword(Player p, String password) {
         return Main.passwords.get(p.getDisplayName()).equals(password);
     }
+
     public static void removePlayerPassword(Player p) {
         Main.passwords.remove(p.getDisplayName());
         savePasswords();
     }
+
     public static void load() {
         loadPasswords();
         if (Main.passwords == null) {
@@ -114,27 +125,34 @@ public class Spaze64 {
     private static void loadPasswords() {
         Main.passwords = stringToStrHashmap(Main.getPlugin().getConfig().getString("passwords"));
     }
+
     private static void savePasswords() {
         Main.getPlugin().getConfig().set("passwords", strHashmapToString(Main.passwords));
         Main.getPlugin().saveConfig();
     }
+
     private static void loadLocations() {
         Main.locations = stringToLocHashmap(Main.getPlugin().getConfig().getString("locations"));
     }
+
     private static void saveLocations() {
         Main.getPlugin().getConfig().set("locations", locHashmapToString(Main.locations));
         Main.getPlugin().saveConfig();
     }
+
     private static void loadLoggedins() {
         Main.loggedins = stringToBoolHashmap(Main.getPlugin().getConfig().getString("loggedins"));
     }
+
     private static void saveLoggedins() {
-        Main.getPlugin().getConfig().set("loggedins", boolHashmapToString( Main.loggedins));
+        Main.getPlugin().getConfig().set("loggedins", boolHashmapToString(Main.loggedins));
         Main.getPlugin().saveConfig();
     }
+
     private static void loadInventories() {
         Main.inventories = stringToStrHashmap(Main.getPlugin().getConfig().getString("inventories"));
     }
+
     private static void saveInventories() {
         Main.getPlugin().getConfig().set("inventories", strHashmapToString(Main.inventories));
         Main.getPlugin().saveConfig();
@@ -153,6 +171,7 @@ public class Spaze64 {
         }
         return "";
     }
+
     private static HashMap<String, Location> stringToLocHashmap(String string) {
         try {
             ByteArrayInputStream stream = new ByteArrayInputStream(Base64.getDecoder().decode(string));
@@ -165,6 +184,7 @@ public class Spaze64 {
         }
         return null;
     }
+
     private static String boolHashmapToString(HashMap<String, Boolean> hashmap) {
         try {
             ByteArrayOutputStream str = new ByteArrayOutputStream();
@@ -177,6 +197,7 @@ public class Spaze64 {
         }
         return "";
     }
+
     private static HashMap<String, Boolean> stringToBoolHashmap(String string) {
         try {
             ByteArrayInputStream stream = new ByteArrayInputStream(Base64.getDecoder().decode(string));
@@ -189,6 +210,7 @@ public class Spaze64 {
         }
         return null;
     }
+
     private static String strHashmapToString(HashMap<String, String> hashmap) {
         try {
             ByteArrayOutputStream str = new ByteArrayOutputStream();
@@ -201,6 +223,7 @@ public class Spaze64 {
         }
         return "";
     }
+
     private static HashMap<String, String> stringToStrHashmap(String string) {
         try {
             ByteArrayInputStream stream = new ByteArrayInputStream(Base64.getDecoder().decode(string));
