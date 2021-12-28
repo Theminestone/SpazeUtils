@@ -59,6 +59,7 @@ public final class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("pw")).setExecutor(new PasswordCommand());
         Objects.requireNonNull(getCommand("rules")).setExecutor(new RulesCommand());
         Objects.requireNonNull(getCommand("invsee")).setExecutor(new InvSeeCommand());
+        Objects.requireNonNull(getCommand("info")).setExecutor(new InfoCommand());
     }
 
     private void registerListeners() {

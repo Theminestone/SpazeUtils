@@ -22,9 +22,7 @@ public class Spaze64 {
 
     public static void PlayerConsoleOutput(Player p) {
         Bukkit.getConsoleSender().sendMessage("");
-
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Player " + p.getName() + " has joined the Server.");
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Here's some information: ");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Here's some information about " + p.getDisplayName() + ":");
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Location: " + "X: " + p.getLocation().getX() + ", Y: " + p.getLocation().getY() + ", Z: " + p.getLocation().getZ());
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Health: " + Math.round(p.getHealth()));
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "FoodLevel: " + p.getFoodLevel());
@@ -37,8 +35,6 @@ public class Spaze64 {
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Fly speed: " + p.getFlySpeed());
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Player Time Offset: " + p.getPlayerTimeOffset());
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Walk speed: " + p.getWalkSpeed());
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Server: " + p.getServer());
-
         Bukkit.getConsoleSender().sendMessage("");
     }
 

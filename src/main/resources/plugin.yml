@@ -22,6 +22,6 @@ commands:
   rules:
     description: Server Rules
   invsee:
-    description: Sees a Inventory of a Player
+    description: See a Player's Inventory
   info:
-    description: Shows Players Informations
+    description: Show Player Information
