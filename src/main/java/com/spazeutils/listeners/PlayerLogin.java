@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -12,7 +13,7 @@ import java.util.Objects;
 public class PlayerLogin implements Listener {
 
     @EventHandler
-    public void onPlayerLogin(PlayerLoginEvent event) {
+    public void onPlayerLogin(@NotNull PlayerLoginEvent event) {
         Player player = event.getPlayer();
         boolean is_whitelisted = false;
         if (Main.getPlugin().getConfig().getList("whitelist") != null) {

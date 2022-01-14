@@ -12,11 +12,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.jetbrains.annotations.NotNull;
 
 public class PlayerJoin implements Listener {
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
+    public void onPlayerJoin(@NotNull PlayerJoinEvent event) {
         Player player = event.getPlayer();
         event.setJoinMessage(" §a>§2>§a> " + ChatColor.GRAY + player.getName());
         Spaze64.PlayerConsoleOutput(player);
@@ -30,7 +31,7 @@ public class PlayerJoin implements Listener {
         clearPlayer(player);
     }
 
-    public void clearPlayer(Player p) {
+    public void clearPlayer(@NotNull Player p) {
         p.getInventory().clear();
         p.setGameMode(GameMode.SPECTATOR);
         p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, Integer.MAX_VALUE, 256));

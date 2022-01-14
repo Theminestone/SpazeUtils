@@ -7,10 +7,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.jetbrains.annotations.NotNull;
 
 public class StatsCommand implements CommandExecutor {
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, Command command, String label, String[] args) {
 
         sender.sendMessage(ChatColor.GOLD + "-------- " + ChatColor.RESET + Main.prefix + ChatColor.GOLD + "--------" + ChatColor.RESET);
         sender.sendMessage(ChatColor.AQUA + "Total Uptime: " + ChatColor.GREEN + Main.getPlugin().getConfig().getInt("stats.uptime_total") + " Minutes");

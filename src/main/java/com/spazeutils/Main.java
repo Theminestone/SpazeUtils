@@ -15,7 +15,6 @@ import java.util.Objects;
 public final class Main extends JavaPlugin {
 
     public static String prefix = "§1[§6SpazeUtils§1] ";
-    public static Spaze64 data;
     private static Main plugin;
     private Logger logger;
     public static HashMap<String, String> passwords;

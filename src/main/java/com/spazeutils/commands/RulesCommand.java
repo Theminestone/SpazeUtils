@@ -12,11 +12,11 @@ public class RulesCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-//            sender.sendMessage("1. no Hacking");
-//            sender.sendMessage("2. no Cheating");
-//            sender.sendMessage("3. Killing players is forbidden");
-            sender.sendMessage(ChatColor.GOLD + "-------- " + ChatColor.RESET + Main.prefix + ChatColor.GOLD + "--------" + ChatColor.RESET);
-            sender.sendMessage("" +
+            player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "1. no Hacking");
+            player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "2. no Cheating");
+            player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "3. Killing players is forbidden");
+            player.sendMessage(ChatColor.GOLD + "-------- " + ChatColor.RESET + Main.prefix + ChatColor.GOLD + "--------" + ChatColor.RESET);
+            player.sendMessage("" +
                     "All players must have appropriate usernames that are not offensive.\n" +
                     "Griefing is strictly prohibited and will result in a permanent ban.\n" +
                     "Going into another player’s base without permission is trespassing.\n" +

@@ -20,10 +20,9 @@ public class InfoCommand implements CommandExecutor {
                 Player player = Bukkit.getPlayer(args[0]);
                 if (player != null) {
                     Spaze64.PlayerConsoleOutput(player);
-                } else sender.sendMessage(Main.prefix + ChatColor.RED +  args[0] + " is not online");
+                } else sender.sendMessage(Main.prefix + ChatColor.RED + args[0] + " is not online");
             }
-        }
-        else {
+        } else {
             sender.sendMessage(Main.prefix + ChatColor.RED + "Error 404");
         }
         return false;

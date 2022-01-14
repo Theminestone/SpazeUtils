@@ -36,6 +36,7 @@ public class PasswordCommand implements CommandExecutor {
                 if (Bukkit.getPlayer(args[1]) == null) {
                     sender.sendMessage(Main.prefix + ChatColor.RED + "No Player named '" + args[1] + "' found.");
                 } else {
+                    assert target != null;
                     Spaze64.setPlayerPassword(target, args[2]);
                 }
             }

@@ -12,8 +12,8 @@ public class Logger {
     }
 
     public void save() {
-        Main.getPlugin().getConfig().set("stats.uptime_total", timer.uptime_total);
-        Main.getPlugin().getConfig().set("stats.uptime", timer.uptime);
+        Main.getPlugin().getConfig().set("stats.uptime_total", Timer.uptime_total);
+        Main.getPlugin().getConfig().set("stats.uptime", Timer.uptime);
         Main.getPlugin().saveConfig();
     }
 
@@ -26,4 +26,3 @@ public class Logger {
         }.runTaskTimer(Main.getPlugin(), 0, 1200);
     }
 }
-

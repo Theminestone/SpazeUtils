@@ -8,6 +8,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -38,7 +41,7 @@ public class Spaze64 {
         Bukkit.getConsoleSender().sendMessage("");
     }
 
-    public static void loadPlayerInv(Player p) {
+    public static void loadPlayerInv(@NotNull Player p) {
         loadInventories();
         String inventoryData = Main.inventories.get(p.getDisplayName());
         try {
@@ -68,56 +71,57 @@ public class Spaze64 {
         saveInventories();
     }
 
-    public static void loadPlayerLoc(Player p) {
+    public static void loadPlayerLoc(@NotNull Player p) {
         loadLocations();
         p.teleport(Main.locations.get(p.getDisplayName()));
     }
 
-    public static void savePlayerLoc(Player p) {
+    public static void savePlayerLoc(@NotNull Player p) {
         Main.locations.put(p.getDisplayName(), p.getLocation());
         saveLocations();
     }
 
-    public static boolean getPlayerLoggedin(Player p) {
+    public static boolean getPlayerLoggedin(@NotNull Player p) {
         loadLoggedins();
         return Main.loggedins.get(p.getDisplayName());
     }
 
-    public static void setPlayerLoggedin(Player p, boolean value) {
+    public static void setPlayerLoggedin(@NotNull Player p, boolean value) {
         Main.loggedins.put(p.getDisplayName(), value);
         saveLoggedins();
     }
 
-    public static boolean checkPlayerLoggedin(Player p) {
+    public static boolean checkPlayerLoggedin(@NotNull Player p) {
         loadLoggedins();
         return Main.loggedins.containsKey(p.getDisplayName());
     }
 
-    public static void removePlayerLoggedin(Player p) {
+    public static void removePlayerLoggedin(@NotNull Player p) {
         Main.loggedins.remove(p.getDisplayName());
         saveLoggedins();
     }
 
-    public static String getPlayerPassword(Player p) {
+    public static String getPlayerPassword(@NotNull Player p) {
         loadPasswords();
         return Main.passwords.get(p.getDisplayName());
     }
 
-    public static void setPlayerPassword(Player p, String value) {
+    public static void setPlayerPassword(@NotNull Player p, String value) {
         Main.passwords.put(p.getDisplayName(), value);
         savePasswords();
     }
 
-    public static boolean checkPlayerPassword(Player p) {
+    public static boolean checkPlayerPassword(@NotNull Player p) {
         loadPasswords();
         return Main.passwords.containsKey(p.getDisplayName());
     }
 
-    public static boolean comparePlayerPassword(Player p, String password) {
+    @Contract("_, null -> false")
+    public static boolean comparePlayerPassword(@NotNull Player p, String password) {
         return Main.passwords.get(p.getDisplayName()).equals(password);
     }
 
-    public static void removePlayerPassword(Player p) {
+    public static void removePlayerPassword(@NotNull Player p) {
         Main.passwords.remove(p.getDisplayName());
         savePasswords();
     }
@@ -192,7 +196,7 @@ public class Spaze64 {
         return "";
     }
 
-    private static HashMap<String, Location> stringToLocHashmap(String string) {
+    private static @Nullable HashMap<String, Location> stringToLocHashmap(String string) {
         try {
             ByteArrayInputStream stream = new ByteArrayInputStream(Base64.getDecoder().decode(string));
             BukkitObjectInputStream data = new BukkitObjectInputStream(stream);
@@ -218,7 +222,7 @@ public class Spaze64 {
         return "";
     }
 
-    private static HashMap<String, Boolean> stringToBoolHashmap(String string) {
+    private static @Nullable HashMap<String, Boolean> stringToBoolHashmap(String string) {
         try {
             ByteArrayInputStream stream = new ByteArrayInputStream(Base64.getDecoder().decode(string));
             ObjectInputStream data = new ObjectInputStream(stream);
@@ -244,7 +248,7 @@ public class Spaze64 {
         return "";
     }
 
-    private static HashMap<String, String> stringToStrHashmap(String string) {
+    private static @Nullable HashMap<String, String> stringToStrHashmap(String string) {
         try {
             ByteArrayInputStream stream = new ByteArrayInputStream(Base64.getDecoder().decode(string));
             ObjectInputStream data = new ObjectInputStream(stream);
